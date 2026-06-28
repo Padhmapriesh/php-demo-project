@@ -1,0 +1,24 @@
+version: 0.0
+os: linux
+
+# CodeDeploy (EC2/On-Premises compute platform) doesn't deploy container
+# images directly — it deploys files/scripts to the instance. Here we ship
+# helper scripts that pull the new image from ECR and restart the container.
+
+files:
+  - source: /
+    destination: /home/ec2-user/php-mysql-app
+
+hooks:
+  AfterInstall:
+    - location: scripts/stop_container.sh
+      timeout: 60
+      runas: root
+  ApplicationStart:
+    - location: scripts/start_container.sh
+      timeout: 120
+      runas: root
+  ValidateService:
+    - location: scripts/validate_service.sh
+      timeout: 60
+      runas: root

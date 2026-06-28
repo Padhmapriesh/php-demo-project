@@ -3,9 +3,7 @@ version: 0.2
 env:
   variables:
     IMAGE_REPO_NAME: "php-mysql-app"
-  # Set these in CodeBuild project's environment variables (not here):
-  # AWS_ACCOUNT_ID, AWS_DEFAULT_REGION
-
+  
 phases:
   pre_build:
     commands:
@@ -30,6 +28,7 @@ phases:
       - echo Writing image definitions file...
       - printf '[{"name":"php-mysql-app","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
       - cat imageDetail.json
+
 
 artifacts:
   files:

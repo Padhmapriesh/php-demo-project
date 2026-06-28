@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_ACCOUNT_ID = '137583030820'
         AWS_REGION     = 'us-east-1'
-        REPO_URI       = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/php-mysql-app"
+        REPO_URI       = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/php-demo-ecr"
         IMAGE_TAG      = "${env.GIT_COMMIT[0..6]}"
     }
 

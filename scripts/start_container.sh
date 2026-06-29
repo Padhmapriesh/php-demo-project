@@ -2,7 +2,7 @@
 set -e
 
 AWS_REGION="us-east-1"
-IMAGE_REPO_NAME="php-mysql-app"
+IMAGE_REPO_NAME="php-demo-ecr"
 
 echo "Fetching configuration from SSM Parameter Store..."
 
